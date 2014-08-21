@@ -5,7 +5,7 @@
 - Set is an **abstract data type** which is collection of *unique* items.
 - Set can be *written* using array or sorted array **data structure**.
 - Sorted array implementation of set is more efficient (i.e. use less time to run) in some operations
-- So we can say that some data structures are more efficient in certain operations than others to implement the same abstract data type
+  - So we can say that some data structures are more efficient in certain operations than others to implement the same abstract data type
 
 ## Data Structure & Algorithms
 
