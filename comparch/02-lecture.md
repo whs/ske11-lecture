@@ -5,7 +5,7 @@
   - CPU can process instructions really fast, but the memory can't keep up with it.
 - In Von Neumann architecture CPU are breaked down to two parts
   - **Control**
-  - **Data path** - consists of ALU (Arithmatic Logic Unit), Register (source of data to compute)
+  - **Data path** - consists of ALU (Arithmetic Logic Unit), Register (source of data to compute)
 - Control loop:
   1. **Fetch**: Get instruction from memory (eg. RAM) -- thus RAM store both data and code. The instruction is stored in IR (Instruction Register -- a special storage to store instructions in CPU)
   2. **Decode**: Identify the kind of instruction retrieved.
@@ -69,13 +69,13 @@ add $t0, $s1, $s2
 sub $t0, $s1, $s2
 ```
 
-(Add/Subtract $s1 and $s2 and save to $t0)
+(Add/Subtract `$s1` and `$s2` and save to `$t0`)
 
 Each arithmetric instruction performs only one operation. The `$` sign is indicating that the address is in register file.
 
 ## Machine language - add instruction
 
-Comparing add operation to R format - arithmetric instruction format:
+Comparing add operation to R format - arithmetic instruction format:
 
 - **op:** `add`
 - **rs:** `$s1`
@@ -128,7 +128,7 @@ For example:
 
 - `$s3` stored 1000. This is the *base address register*
 - `4($s3)` means 1000 + 4 = 1004
-- When writing loop, we could use `1000($s3)` and shift $s3 by 4 each loop to access 1000, 1004, 1008...
+- When writing loop, we could use `1000($s3)` and shift `$s3` by 4 each loop to access 1000, 1004, 1008...
 
 These instructions are in **I format**
 
