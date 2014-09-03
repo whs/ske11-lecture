@@ -153,7 +153,7 @@ if(i == j){
 
 ```nasm
 		bne $s0, $s1, Lbl1
-		add $s3, $s0, $s1 # $s3 = $s0+$s1
+		add $s3, $s0, $s1 ; $s3 = $s0+$s1
 Lbl1:	...
 ```
 
