@@ -6,17 +6,15 @@ Scan from left to right one character at a time
 
 - If it is operand, print it
 - If it is (, push onto stack
-- If it is operator, pop the stack until we have lower precedence item on ..., push that operator
-- If it is ), pop until ( including (
-- At the end, pop everything
+- If it is operator, pop the stack and print the popped item until we have an operator with lower precedence than the current operator on top of stack, push that operator
+- If it is ), pop and print until ( including ( but don't print (
+- At the end, pop and print everything
 
 The operator precedence are:
 - */
 - +-
 
 For example, 1+2*3+(4*5+6)
-
-	Note: should be incorrect, please fix
 
 	Postfix: 1 2
 	Stack: +
@@ -38,8 +36,6 @@ For example, 1+2*3+(4*5+6)
 	Stack: + (
 	Stack: +
 	Stack:
-
-TODO: Computation by stack
 
 Instead of doing the actual calculation, once an operator is discovered we form a subtree of that operator as a root and push it onto the stack
 
