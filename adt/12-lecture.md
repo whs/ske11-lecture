@@ -108,7 +108,7 @@ If `X` is the left child of left child, we perform a **zig-zig operations**: rot
 	     /   \
 	   X       G
 	  / \     / \
-	(A) (B) (C) (P)
+	(A) (B) (C) (D)
 
 	Rotate P right:
 
