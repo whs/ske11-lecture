@@ -6,45 +6,35 @@ This is the final lecture.
 
 Suppose we have an undirected connected graph with edge values (each edge or connection between nodes has a value associated to it) that is not a tree (there could be more than one path between a pair of nodes)
 
-	     o
-	    / \
-	   6   12
-	  /     \
-	 o---5---o--9-o
-	 |\      |
-	14 8     7
-	 |  \    |
-	 o   |   o-15-o
-	  \  |   /
-	   3 |   10
-	    \|   / 
-	     o--o
+![15-mst1.png](img/15-mst1.png)
 
 The minimum spanning tree problem is to construct a tree from this graph where the sum of the edge values is the minimum.
 
 In this graph we can see that **15** and **9** are edges that cannot be omitted as it would disconnected the other nodes from the rest of the graph (and a tree must be connected)
 
+![15-mst2.png](img/15-mst2.png)
+
 >Note: when doing this try to write a pencil mark seperating the connected nodes from the rest of the tree
 
 Now we have to connect them. From the node on the left of 15 we can see that there are two ways to connect them by going to **10** or **7**. As we want the tree to be minimum we chose 7 to minimize the cost.
 
+![15-mst3.png](img/15-mst3.png)
+
 At this moment the edges 7, 9 and 15 are connected. From these connected nodes we want to connect to other nodes in the graph and **5** is the path with least value so we add 5 to our connection.
+
+![15-mst4.png](img/15-mst4.png)
 
 After we picked 5, we can see that the topmost node needs to be connected so we have to choose either 6 or 12 and **6** is chosen for its cost.
 
+![15-mst5.png](img/15-mst5.png)
+
 Then from the connected set of nodes we then have to connect the rest of the graph. We can do this by connecting edge **8** and **3**
+
+![15-mst6.png](img/15-mst6.png)
 
 The resulting tree:
 
-	    o
-	   /
-	  6
-	 /
-	o--5--o--9-o
-	 \    |
-	  8   7
-	   \  |
-	o-3-o o-15-o
+![15-mst7.png](img/15-mst7.png)
 
 This algorithm is a greedy algorithm which use decision based on the guideline that applies to the local situation. In this case the guideline is that we chose the edge with minimum value. Specifically, this algorithm is called [Prim's algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm). The proof that this algorithm generates a correct minimum spanning tree is by contradiction.
 
