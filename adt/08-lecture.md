@@ -154,7 +154,7 @@ The tree also can be used to generate prefix and postfix notation (normally we u
 To convert a tree to the prefix form:
 
 ```py
-def process(node):e
+def process(node):
 	print node.datum
 	process(node.left)
 	process(node.right)

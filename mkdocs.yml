@@ -1,0 +1,53 @@
+site_name: SKE11 Lecture
+theme: readthedocs
+repo_url: https://github.com/whs/ske11-lecture
+docs_dir: .
+markdown_extensions: [fenced_code, tables]
+pages:
+- [index.md, SKE11 Lecture]
+- [README.md, About this repository]
+# OOP1
+- [oop1/01-class.md, Y1S1 - Object Oriented Programming 1, 'Class, static, constructor, getter & settor and visibility']
+- [oop1/02-inheritance.md, Y1S1 - Object Oriented Programming 1, 'Inheritance']
+- [oop1/03-generics.md, Y1S1 - Object Oriented Programming 1, 'Generics, Polymorphism']
+- [oop1/serializable.md, Y1S1 - Object Oriented Programming 1, 'Serializable']
+- [oop1/project-explaination.md, Y1S1 - Object Oriented Programming 1, 'อธิบายโค้ดใน project']
+# OOP2
+- [oop2/01-polymorph.md, Y1S2 - Object Oriented Programming 2, 'Polymorphism และ Interface']
+- [oop2/02-parallel.md, Y1S2 - Object Oriented Programming 2, 'Parallel ใน Java']
+# ISP
+- [jsstuff.md, Y1S2 - Individual Software Process, 'ถามตอบ JavaScript พื้นฐาน']
+- [jsstuff2.md, Y1S2 - Individual Software Process, 'JavaScript class และ JSHint']
+# ADT
+- [adt/02-lecture.md, Y2S1 - Abstract Data Structure, '21 Aug 2014: Introduction to Sorting']
+- [adt/02-lecture-th.md, Y2S1 - Abstract Data Structure, '21 สิงหาคม 2557: บทนำการเรียงข้อมูล']
+- [adt/03-lecture.md, Y2S1 - Abstract Data Structure, '25 Aug 2014: Recursion']
+- [adt/03-lecture-th.md, Y2S1 - Abstract Data Structure, '25 สิงหาคม 2557: Recursion (การวนซ้ำ)']
+- [adt/04-lecture.md, Y2S1 - Abstract Data Structure, '4 September 2014: Recursion (cont.)']
+- [adt/05-lecture.md, Y2S1 - Abstract Data Structure, '18 September 2014: Recursion examples']
+- [adt/06-lecture.md, Y2S1 - Abstract Data Structure, '22 September 2014: Running time analysis']
+- [adt/bigo.md, Y2S1 - Abstract Data Structure, Big O notation]
+- [adt/07-lecture.md, Y2S1 - Abstract Data Structure, '25 September 2014: List']
+- [adt/08-lecture.md, Y2S1 - Abstract Data Structure, '2 October 2014: Tree']
+- [adt/09-lecture.md, Y2S1 - Abstract Data Structure, '6 October 2014: Binary Search Tree and postfix computation']
+- [adt/10-lecture.md, Y2S1 - Abstract Data Structure, '9 October 2014: Infix to postfix and Stack']
+- [adt/11-lecture.md, Y2S1 - Abstract Data Structure, '20 October 2014: Queue, BST Sort, QuickSort']
+- [adt/12-lecture.md, Y2S1 - Abstract Data Structure, '3 November 2014: Splay tree, Priority Queue, Heap']
+- [adt/12o-lecture.md, Y2S1 - Abstract Data Structure, '6 November 2014: Extra class on cache and the goal of computer architecture']
+- [adt/13-lecture.md, Y2S1 - Abstract Data Structure, '10 November 2014: Heap (cont), Heapsort, Symbol table and hashing']
+- [adt/14-lecture.md, Y2S1 - Abstract Data Structure, '24 November 2014: Hashtable, fixing hash collision, Graph']
+- [adt/15-lecture.md, Y2S1 - Abstract Data Structure, '1 December 2014: Minimum spanning tree, Disjoint set']
+# Comparch
+- [comparch/02-lecture.md, Y2S1 - Computer Organization and Architecture, '3 September 2014: Von Neumann architecture, MIPS ISA, Binary number']
+- [comparch/02-lecture-th.md, Y2S1 - Computer Organization and Architecture, '3 กันยายน 2557: สถาปัตยกรรม Von Neumann, MIPS ISA, เลขฐานสอง']
+- [comparch/asm.md, Y2S1 - Computer Organization and Architecture, เริ่มต้น MIPS Assembly]
+- [comparch/03-lecture.md, Y2S1 - Computer Organization and Architecture, "10 September 2014: More in MIPS instructions, 2's complement"]
+- [comparch/04-lecture.md, Y2S1 - Computer Organization and Architecture, "24 September 2014: MIPS Multiplication, Division, Floating point representation and arithmetric"]
+- [comparch/05-lecture.md, Y2S1 - Computer Organization and Architecture, "1 October 2014: Execution time and CPI"]
+- [comparch/06-lecture.md, Y2S1 - Computer Organization and Architecture, "8 October 2014: CPU operation stages, single and multi cycle design"]
+- [comparch/08-lecture.md, Y2S1 - Computer Organization and Architecture, "5 November 2014: MIPS Pipeline and hazards"]
+- [comparch/09-lecture.md, Y2S1 - Computer Organization and Architecture, "12 November 2014: Overcoming hazards"]
+- [comparch/10-lecture.md, Y2S1 - Computer Organization and Architecture, "19 November 2014: Memory and cache design"]
+- [comparch/11-lecture.md, Y2S1 - Computer Organization and Architecture, "26 November 2014: Cache performance, associativity, multi level cache"]
+# Comskill
+- [comskill/01-lecture.md, Y2S1 - Communication Skills for SKE, "14 November 2014: Meeting"]

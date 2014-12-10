@@ -2,7 +2,7 @@
 
 **Exam on 13 Oct 2014, 8-11am.**
 
-(please submit if you have lecture on the math section)
+(please submit your note if you have lecture on the math section)
 
 ## Computing closest point
 
