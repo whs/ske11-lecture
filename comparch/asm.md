@@ -7,7 +7,7 @@
 
 MARS จะมาเป็นรูปแบบของ jar สามารถใช้ได้ทุก OS ที่ลง Java แล้วในไฟล์เดียว
 
-![Main GUI](img/mars1.png)
+![Main GUI](comparch/img/mars1.png)
 
 เมื่อเปิดโปรแกรมขึ้นมาจะพบกับหน้าตาดังภาพ ให้ปรับขนาดหน้าต่าง Mars Message ลงเล็กๆ เพื่อให้เห็นหน้าต่าง Edit ใหญ่ขึ้น จากนั้นเข้าไปที่ Settings>Memory configuration เลือก Compact, Data at Address 0 แล้วกด Apply and close เพื่อให้หน่วยความจำที่เราใช้อยู่ก่อนโค้ด
 
@@ -146,7 +146,7 @@ j loop # loop infinitely
 
 เมื่อเขียนโปรแกรมเสร็จแล้วให้เซฟไฟล์และกดปุ่มไขควงด้านบนเพื่อคอมไพล์ แล้วกดปุ่มรัน
 
-![Running](img/mars2.png)
+![Running](comparch/img/mars2.png)
 
 เมื่อคอมไพล์ผ่านแล้วจะปรากฎหน้า Execute ขึ้นมาโดยด้านบน (Text Segment) จะแสดงโค้ดของเรา โดยคอลัมน์ Source คือโค้ดของเรา ส่วน Basic คือโค้ดที่ Assembler แปลงออกมาแล้วซึ่งบางคำสั่งอาจจะแปลงได้หลายคำสั่ง
 

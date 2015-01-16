@@ -67,6 +67,8 @@ To sort with BST:
 1. BST insertion
 2. In-order traversal -- travese in following order: recurse left, self, recurse right
 
+.
+
 	6 10 13 5 8 3 2 11
 
 	1. Build BST
@@ -98,13 +100,13 @@ To sort 6 10 13 5 8 3 2 11
 1. There is a pivot element: 6
 2. For every elements if it is less than pivot, move it to the left otherwise move it to the right: [5, 3, 2] 6 [10, 13, 8, 11]
 3. For every subgroup, recurse
-   3.1. For left:
-       3.1.1. Pivot: 5
-       3.1.2. 2 5 3
-   3.2. For right:
-       3.2.1. Pivot: 11
-       3.2.2. [8 10] 11 13
-       3.2.3. Recurse on the left so that we get 8 10
+   1. For left:
+       1. Pivot: 5
+       2. 2 5 3
+   2. For right:
+       1. Pivot: 11
+       2. [8 10] 11 13
+       3. Recurse on the left so that we get 8 10
 
 So to code this, we have 3 pointers: pivot, `i`, `j`.
 
