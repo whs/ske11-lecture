@@ -51,3 +51,10 @@ pages:
 - [comparch/11-lecture.md, Y2S1 - Computer Organization and Architecture, "26 November 2014: Cache performance, associativity, multi level cache"]
 # Comskill
 - [comskill/01-lecture.md, Y2S1 - Communication Skills for SKE, "14 November 2014: Meeting"]
+# Database
+- [database/01-lecture.md, Y2S2 - Database, "16 January 2015: Introduction to Database Management"]
+# OS
+- [os/01-lecture.md, Y2S2 - Operating System, "16 January 2015: Introduction"]
+# Softspec
+- [softspec/01-lecture.md, Y2S2 - Software Specification and Design, "15 January 2015: Analysis, Design, Process"]
+- [softspec/01-summary.md, Y2S2 - Software Specification and Design, "สรุปบทที่ 1-5 (OOA/D, Iterative process, Inception phase, Requirement)"]
