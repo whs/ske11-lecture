@@ -8,7 +8,7 @@ Class diagram shows the structure of the system and can be used for
 - Software design
 - Implementation level diagram
 
-![Diagram 1](02-lab-diagram.png)
+![Diagram 1](img/02-lab-diagram.png)
 
 At modeling, we only have `faceValue` then in software design we realize that `faceValue` is int {1..6} and it has `roll` behavior. For implementation level design we adds the constructor and `getFaceValue`. After you have write it you might realize that you need `random`, a random number generator instance.
 
@@ -27,11 +27,11 @@ public class LineItem extends AbstractItem implements Comparable<LineItem> {
 }
 ```
 
-![Diagram 2](02-lab-diagram_001.png)
+![Diagram 2](img/02-lab-diagram_001.png)
 
 Arrowheads in UML:
 
-![Diagram 3](02-lab-diagram_002.png)
+![Diagram 3](img/02-lab-diagram_002.png)
 
 ### Example 2
 
@@ -55,7 +55,7 @@ public class Mailbox {
 
 ```
 
-![Diagram 4](02-lab-diagram_003.png)
+![Diagram 4](img/02-lab-diagram_003.png)
 
 - * is written instead of a number and means any amount
 - if we write 0..32767 instead of * it means that it can contains any amount of MailMessage up to 32767
@@ -86,7 +86,7 @@ public class ChessBoard {
 
 In this case `ChessBoard` owns `Square`. `Square` only appears in one collection and if we destroy the collection it will destroy the individual objects too. This is called "Composition".
 
-![Diagram 5](02-lab-diagram_004.png)
+![Diagram 5](img/02-lab-diagram_004.png)
 
 ### Example 4
 
@@ -104,15 +104,15 @@ public class Bank {
 }
 ```
 
-![Diagram 6](02-lab-diagram_005.png)
+![Diagram 6](img/02-lab-diagram_005.png)
 
 Or we can write stuff as association
 
-![Diagram 7](02-lab-diagram_006.png)
+![Diagram 7](img/02-lab-diagram_006.png)
 
 ## Sequence diagram
 
-![Diagram 8](02-lab-diagram_007.png)
+![Diagram 8](img/02-lab-diagram_007.png)
 
 If the `Coin` type is written as `:Coin` we say that it is some sort of `Coin` object (can be any Coin) but if it is written as `C:Coin` it IS the `Coin` class.
 
@@ -132,7 +132,7 @@ public class CoinMath {
 }
 ```
 
-![Diagram 9](02-lab-diagram_008.png)
+![Diagram 9](img/02-lab-diagram_008.png)
 
 ```java
 public class Purse {
@@ -158,4 +158,4 @@ public class Purse {
 }
 ```
 
-![Diagram 10](02-lab-diagram_009.png)
+![Diagram 10](img/02-lab-diagram_009.png)

@@ -39,7 +39,7 @@ Use case: Play a dice game
 
 Here we have "Player" "Die" "Game".
 
-![Diagram 1](01-lecture-diagram.png)
+![Diagram 1](img/01-lecture-diagram.png)
 
 (A player rolls two dice. A player plays a game. A game has two dice.)
 
@@ -47,11 +47,11 @@ Here we have "Player" "Die" "Game".
 
 ### Interaction diagram
 
-![Diagram 2](01-lecture-diagram_001.png)
+![Diagram 2](img/01-lecture-diagram_001.png)
 
 ### Class diagram
 
-![Diagram 3](01-lecture-diagram_002.png)
+![Diagram 3](img/01-lecture-diagram_002.png)
 
 See that player is missing from this class diagram as we doesn't care about the player.
 
@@ -194,37 +194,37 @@ In each phases there could be iteration or waterfall process inside. (This is ho
 
 ## Class diagram
 
-![Diagram 4](01-lecture-diagram_003.png)
+![Diagram 4](img/01-lecture-diagram_003.png)
 
 The `-` sign is for private while `+` is for public. If something is underlined it is static.
 
 There will be association between classes.
 
-![Diagram 5](01-lecture-diagram_004.png)
+![Diagram 5](img/01-lecture-diagram_004.png)
 
 A player "use" the weapon. (The weapon doesn't know about the player)
 
 **Aggregation:**
 
-![Diagram 6](01-lecture-diagram_005.png)
+![Diagram 6](img/01-lecture-diagram_005.png)
 
 Professor has class.
 
 **Composition:**
 
-![Diagram 7](01-lecture-diagram_006.png)
+![Diagram 7](img/01-lecture-diagram_006.png)
 
 Square *always* belong to chessboard. Square is meaningless without chessboard.
 
 **Generalization:**
 
-![Diagram 8](01-lecture-diagram_007.png)
+![Diagram 8](img/01-lecture-diagram_007.png)
 
 Person is the base class of both Student and professor
 
 **Realization:**
 
-![Diagram 9](01-lecture-diagram_008.png)
+![Diagram 9](img/01-lecture-diagram_008.png)
 
 ## Design Patterns
 
@@ -263,7 +263,7 @@ Singleton is used in `Runtime` class in Java. You cannot do `new Runtime();` but
 
 The diagram of Singleton
 
-![Diagram 10](01-lecture-diagram_009.png)
+![Diagram 10](img/01-lecture-diagram_009.png)
 
 ### Decorator Pattern
 
