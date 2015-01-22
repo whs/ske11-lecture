@@ -1,0 +1,209 @@
+This document is used to store UML used in 02-lab.md
+
+# Diagram 1
+
+	          rolls
+	               2
+	DiceGame -------> Die
+	--------         ------------------------
+	- ....           - faceValue : int {1..6}
+	                 - random : Random {read-only}
+	                 ------------------------
+	                 + Die()
+	                 + roll() : void
+	                 + getFaceValue() : int 
+
+```
+@startuml
+
+class Die {
+	- faceValue : int {1..6}
+	- random : Random {read-only}
+	+ Die()
+	+ roll() : void
+	+ getFaceValue() : int
+}
+
+DiceGame --> "2" Die : "rolls"
+@enduml
+```
+
+# Diagram 2
+
+	AbstractItem  <<interface>> [T]
+	 {abstract}      java.util:
+	   ^             Comparable
+	   |          ----------------
+	   |          compareTo(T) : boolean
+	   |           ^
+	   |          . T::LineItem
+	   |         .
+	     LineItem
+	    .
+	    .
+	    v
+	java.util:
+	  Date
+
+All arrowheads must use *open* triangle arrowhead except for Date.
+
+```
+@startuml
+abstract class AbstractItem
+interface java.util.Comparable<T> {
+	compareTo(T) : boolean
+}
+LineItem ..|> java.util.Comparable : "T::LineItem"
+LineItem --|> AbstractItem
+LineItem ..> java.util.Date
+@enduml
+```
+
+# Diagram 3
+
+- ➜ association (no triangle). The only arrow head that can has numbers on it (eg. LineItem has a product)
+- ➞ extends (open triangle head)
+- ➟ implements (dotted line)
+- ....> depends (dotted line and no triangle head)
+
+To show that `LineItem` depends on `Date` (it's not an association as it is not an attribute but a local variable)
+
+```
+@startuml
+A --> B
+note on link
+	Association.
+	The only one that can has number on it.
+	eg. LineItem has a product
+end note
+C --|> D
+note on link : Extends
+E ..|> F
+note on link : Implements
+G ..> H
+note on link
+	Depends. eg. LineItem depends on Date
+	(LineItem doesn't store Date but if
+	Date is missing it cannot be used)
+end note
+@enduml
+```
+# Diagram 4
+
+	             *
+	Mailbox o---- MailMessage
+
+(use white diamond)
+
+```
+@startuml
+Mailbox o-- "*" MailMessage
+@enduml
+```
+
+# Diagram 5
+
+	              64
+	ChessBoard o---Square
+	               ----------
+	               - color
+	                  | 0..1
+	                  v
+	               Piece
+	               ----------
+
+(Use black diamond at o)
+
+```
+@startuml
+
+class Square {
+	color
+}
+
+ChessBoard *-- "64" Square
+
+Square --> "0..1" Piece
+
+@enduml
+```
+
+# Diagram 6
+
+```
+@startuml
+class Bank{
+	+ {static} NAME : String = "SKE Bank"
+	- accounts : Account[*] {ordered}
+	# manager : Person
+	~ location : Address
+}
+@enduml
+```
+
+# Diagram 7
+
+```
+@startuml
+Bank --> "manager" Person : "managed by"
+Bank --> "NAME" String
+Bank --> "location" Address
+@enduml
+```
+
+# Diagram 8
+
+@startuml
+hide footbox
+
+[--> Coin
+activate Coin
+note right : activation box
+[<-- Coin
+deactivate Coin
+@enduml
+
+# Diagram 9
+
+@startuml
+hide footbox
+
+[-> ":CoinMath" : add(a, b)
+activate ":CoinMath"
+":CoinMath" -> "a:Coin" : getValue
+activate "a:Coin"
+"a:Coin" --> ":CoinMath" : va
+deactivate "a:Coin"
+":CoinMath" -> "b:Coin" : getValue
+activate "b:Coin"
+"b:Coin" --> ":CoinMath" : vb
+deactivate "b:Coin"
+[<-- ":CoinMath" : va+vb
+deactivate ":CoinMath"
+@enduml
+
+# Diagram 10
+
+@startuml
+hide footbox
+
+[-> ":Purse" : deposit(coin)
+activate ":Purse"
+":Purse" -> ":Purse" : isFull()
+activate ":Purse"
+":Purse" <-- ":Purse" : full
+deactivate ":Purse"
+
+group full == true
+	[<-- ":Purse" : false
+else
+	":Purse" -> "coins:List" : add(coin)
+	activate "coins:List"
+	"coins:List" --> ":Purse"
+	deactivate "coins:List"
+	[<-- ":Purse" : true
+end
+
+deactivate ":Purse"
+
+@enduml
