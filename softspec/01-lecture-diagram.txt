@@ -1,0 +1,176 @@
+This document is used to store UML used in 01-lecture.md
+
+# Diagram 1
+
+	          rolls
+	        1       2
+	Player ---------- Die
+	  |1             -----
+	  |              Face value
+	  |  Plays        | 2
+	  |1              |
+	Game---------------
+	     1 has
+
+@startuml
+class Die{
+	Face value
+}
+
+Player "1" -- "2" Die : rolls
+Player "1" -- "1" Game : plays
+Die "2" -- "1" Game : has
+@enduml
+
+# Diagram 2
+
+	    DiceGame            d1: Die   d2: Die
+	      |                    |        |
+	play->|                    |        |
+	      |      roll()        |        |
+	      |------------------->|        |
+	      | fv1=getFaceValue() |        |
+	      |------------------->|        |
+	      |      roll()        |        |   
+	      |---------------------------->|
+	      | fv1=getFaceValue() |        |
+	      |---------------------------->|
+
+@startuml
+hide footbox
+[-> DiceGame : play
+activate DiceGame
+DiceGame -> "d1: Die" : roll()
+DiceGame -> "d1: Die" : "fv1=getFaceValue()"
+DiceGame -> "d2: Die" : roll()
+DiceGame -> "d2: Die" : "fv1=getFaceValue()"
+deactivate DiceGame
+@enduml
+
+# Diagram 3
+
+	DiceGame                       Die
+	----------   1       2 ----------------
+	die1 : Die   --------> faceValue : int
+	die2 : Die             ----------------
+	----------             getFaceValue()
+	play()                 roll()
+
+@startuml
+class DiceGame {
+	Die die1
+	Die die2
+}
+class Die {
+	int faceValue
+	getFaceValue()
+	roll()
+}
+
+DiceGame "1" --> "2" Die
+@enduml
+
+# Diagram 4
+
+	Monster
+	--------------------------
+	- health : int
+	- speed : int
+	- alive : boolean
+	---------------------------
+	+ attack(p: Player) : void
+	+ move() : void
+	+ isAlive() : boolean
+
+@startuml
+class Monster {
+	- health : int
+	- speed : int
+	- alive : boolean
+	+ attack(p : Player) : void
+	+ move() : void
+	+ isAlive() : boolean
+}
+@enduml
+
+# Diagram 5
+
+	[Player] ---> [Weapon]
+
+@startuml
+Player --> Weapon
+@enduml
+
+# Diagram 6
+
+	[Professor]<>-------[Class]
+
+@startuml
+Professor o-- Class
+@enduml
+
+# Diagram 7
+
+    [Chessboard]<>---------[Square]
+	
+	(The <> is blacked out)
+
+@startuml
+Chessboard *-- Square
+@enduml
+
+# Diagram 8
+
+Generalization:
+
+	Person
+	--------------
+	- name: String
+	^           ^
+	|           |
+	|           |
+	Student		Professor
+
+@startuml
+class Person {
+	- name : String
+}
+Student --|> Person
+Professor --|> Person
+@enduml
+
+# Diagram 9
+
+    Flyable
+	---------
+	- fly
+	^       ^
+	.       .
+	.       .
+	.       .
+	Duck    Airplane
+
+@startuml
+interface Flyable {
+	fly()
+}
+Duck ..|> Flyable
+Airplane ..|> Flyable
+@enduml
+
+# Diagram 10
+
+	Singleton
+	---------------------------
+	- _instance: Singleton_
+	---------------------------
+	+ _getInstance() : Singleton_
+	- Singleton() : void
+
+@startuml
+class Singleton {
+	- {static} instance : Singleton
+	+ {static} getInstance() : Singleton
+	- Singleton() : void
+}
+@enduml

@@ -39,15 +39,7 @@ Use case: Play a dice game
 
 Here we have "Player" "Die" "Game".
 
-	          rolls
-	        1       2
-	Player ---------- Die
-	  |1             -----
-	  |              Face value
-	  |  Plays        | 2
-	  |1              |
-	Game---------------
-	     1 has
+![Diagram 1](01-lecture-diagram.png)
 
 (A player rolls two dice. A player plays a game. A game has two dice.)
 
@@ -55,26 +47,11 @@ Here we have "Player" "Die" "Game".
 
 ### Interaction diagram
 
-	    DiceGame            d1: Die   d2: Die
-	      |                    |        |
-	play->|                    |        |
-	      |      roll()        |        |
-	      |------------------->|        |
-	      | fv1=getFaceValue() |        |
-	      |------------------->|        |
-	      |      roll()        |        |   
-	      |---------------------------->|
-	      | fv1=getFaceValue() |        |
-	      |---------------------------->|
+![Diagram 2](01-lecture-diagram_001.png)
 
 ### Class diagram
 
-	DiceGame                       Die
-	----------   1       2 ----------------
-	die1 : Die   --------> faceValue : int
-	die2 : Die             ----------------
-	----------             getFaceValue()
-	play()                 roll()
+![Diagram 3](01-lecture-diagram_002.png)
 
 See that player is missing from this class diagram as we doesn't care about the player.
 
@@ -217,57 +194,37 @@ In each phases there could be iteration or waterfall process inside. (This is ho
 
 ## Class diagram
 
-	Monster
-	--------------------------
-	- health : int
-	- speed : int
-	- alive : boolean
-	---------------------------
-	+ attack(p: Player) : void
-	+ move() : void
-	+ isAlive() : boolean
+![Diagram 4](01-lecture-diagram_003.png)
 
 The `-` sign is for private while `+` is for public. If something is underlined it is static.
 
 There will be association between classes.
 
-
-	[Player] ---> [Weapon]
+![Diagram 5](01-lecture-diagram_004.png)
 
 A player "use" the weapon. (The weapon doesn't know about the player)
 
-	Aggregation: [Professor]<>-------[Class]
+**Aggregation:**
+
+![Diagram 6](01-lecture-diagram_005.png)
 
 Professor has class.
 
-	Composition: [Chessboard]<>---------[Square]
-	
-	(The <> is blacked out)
+**Composition:**
+
+![Diagram 7](01-lecture-diagram_006.png)
 
 Square *always* belong to chessboard. Square is meaningless without chessboard.
 
-	Generalization:
+**Generalization:**
 
-	Person
-	--------------
-	- name: String
-	^           ^
-	|           |
-	|           |
-	Student		Professor
+![Diagram 8](01-lecture-diagram_007.png)
 
 Person is the base class of both Student and professor
 
-	Realization:
+**Realization:**
 
-	Flyable
-	---------
-	- fly
-	^       ^
-	.       .
-	.       .
-	.       .
-	Duck    Airplane
+![Diagram 9](01-lecture-diagram_008.png)
 
 ## Design Patterns
 
@@ -306,12 +263,7 @@ Singleton is used in `Runtime` class in Java. You cannot do `new Runtime();` but
 
 The diagram of Singleton
 
-	Singleton
-	---------------------------
-	- _instance: Singleton_
-	---------------------------
-	+ _getInstance() : Singleton_
-	- Singleton() : void
+![Diagram 10](01-lecture-diagram_009.png)
 
 ### Decorator Pattern
 
