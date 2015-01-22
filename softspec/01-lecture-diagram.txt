@@ -98,6 +98,8 @@ class Monster {
 	[Player] ---> [Weapon]
 
 @startuml
+class Player{
+}
 Player --> Weapon
 @enduml
 
