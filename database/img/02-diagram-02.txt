@@ -1,0 +1,11 @@
+[Course]
+*CourseNum
+ CrsDesc
+ CrsUnit
+
+[Offering]
+*OfferNo
+ OffLocation
+ OffTime
+
+[Course] 1--* [Offering] <has>

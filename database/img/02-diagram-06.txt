@@ -1,0 +1,17 @@
+[Car]
+*license_no
+ model
+ year
+
+[Person]
+*driver_ID
+ address
+ name
+
+[Accident]
+*report_number
+ location
+ date
+
+[Car] +--* [Accident]
+[Person] 1--+ [Car]

@@ -1,0 +1,10 @@
+[Building]
+*BldgID
+ BldgName
+ BldgLocation
+
+(Room)
+*RoomNo
+ RoomCapacity
+
+ [Building] 1--+ (Room) <contains>

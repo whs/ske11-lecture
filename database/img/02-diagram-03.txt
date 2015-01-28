@@ -1,0 +1,18 @@
+[Office]
+*OfficeNo
+ OffPhone
+ OffType
+
+[Faculty]
+*FacSSN
+ FacSalary
+ FacRank
+ FacHireDate
+
+[Offering]
+*OfferNo
+ OffLocation
+ OffTime
+
+[Office] 1--? [Faculty] <WorksIn>
+[Faculty] *--* [Offering] <TeamTeaches>

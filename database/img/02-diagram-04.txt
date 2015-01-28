@@ -1,0 +1,5 @@
+[Teacher] +--* [Conference] <attend>
+[Customer] 1--* [Product] <purchases>
+[Player] *--* [Football Team] <play>
+[Football Team] 1--* [Player] <member_of>
+[Product] *--* [Warehouse] <stored-in>

@@ -1,0 +1,9 @@
+[Course]
+*CourseNum
+CrsDesc
+CrsUnit
+
+[Offering]
+*OfferNo
+OffLocation
+OffTime
