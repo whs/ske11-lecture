@@ -1,0 +1,30 @@
+This document is storing diagram for 04-lab.md
+
+## Quiz answer
+
+@startuml
+hide footbox
+
+[-> ":"
+activate ":"
+":" -> "register:Register" : startSale()
+activate "register:Register"
+
+create "sale:Sale"
+"register:Register" -> "sale:Sale" : <<create>>
+
+deactivate "register:Register"
+
+create "item:Item"
+":" -> "item:Item" : <<create>>
+
+":" -> "register:Register" : addItem(item)
+activate "register:Register"
+"register:Register" -> "sale:Sale" : add(item)
+activate "sale:Sale"
+deactivate "sale:Sale"
+deactivate "register:Register"
+
+deactivate ":"
+
+@enduml

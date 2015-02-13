@@ -1,0 +1,19 @@
+This file is used in 04-lecture.md
+
+@startuml
+ProductCatalog "1" -- "1..*" ProductDescription : store
+ProductDescription "1" -- "*" Item : describe
+Store "*" -- "1" ProductCatalog : used by
+Store "1" -- "*" Item : stocks
+Store "1" -- "1..*" Register : house
+Store "1" -- "1" Ledger : have
+Ledger "1" -- "*" Sale : log completed
+
+SaleLineItem "1" -- "1..*" Item : contain
+Sale "1" -- "1..*" SaleLineItem : contained in
+Sale "1" -- "1" CashPayment : < pay
+Sale "1" -- "1" Customer : have
+Sale "*" -- "1" Register : capture
+
+Register "1" -- "1" Cashier : < used by
+@enduml
