@@ -1,0 +1,13 @@
+[Student]
+*StdSSN
+ StdName
+
+[Enrollment]
+EnrGrade
+
+[Offering]
+*OfferNo
+ OffLocation
+
+[Student] 1--* [Enrollment] <Enrolls>
+[Enrollment] *--1 [Offering] <In>
