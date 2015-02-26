@@ -1,0 +1,33 @@
+@startuml
+class Cashier{
+	
+}
+
+class Customer{
+	
+}
+
+class Sale{
+	/total
+	tax
+}
+note left: / indicates computed attribute
+
+class Product{
+	productCode
+	description
+	price
+}
+
+class LineItem{
+	quantity
+}
+
+LineItem -- "1" Product : product
+Sale -- "*" LineItem : items
+POS -- Sale : performs
+Product <--* ProductCatalog : < recorded in
+SaleLedger --> Sale : records >
+note bottom of SaleLedger: Write arrow on relationship if it is not read left to right
+Sale --> Payment
+@enduml

@@ -1,0 +1,113 @@
+This is used in 05-lecture.md
+
+## Use case and SSD
+
+@startuml
+hide footbox
+actor Cashier
+Cashier -> System : start a new sale
+
+loop
+
+Cashier -> System : enter item
+System --> Cashier : description, total
+
+end loop
+
+Cashier -> System : end sale
+System --> Cashier : total, tax
+
+Cashier -> System : make payment
+System --> Cashier : change, receipt
+
+@enduml
+
+## Message
+
+@startuml
+hide footbox
+[-> ": Foo" : doX
+activate ": Foo"
+": Foo" -> ": Bar" : doA
+activate ": Bar"
+deactivate ": Bar"
+": Foo" -> ": Bar" : doB
+activate ": Bar"
+deactivate ": Bar"
+": Foo" -> ": Bar" : doC
+activate ": Bar"
+": Bar" --> ": Foo"
+deactivate ": Bar"
+deactivate ": Foo"
+@enduml
+
+
+## self call
+
+@startuml
+hide footbox
+[-> ": Foo" : doX
+activate ": Foo"
+": Foo" -> ": Foo" : clear
+activate ": Foo"
+deactivate ": Foo"
+deactivate ": Foo"
+@enduml
+
+## creation
+
+@startuml
+hide footbox
+create Foo
+create Bar
+Foo -> Bar : create
+@enduml
+
+## termination
+
+@startuml
+hide footbox
+Foo -> Bar : destroy
+destroy Bar
+@enduml
+
+## loop
+
+@startuml
+hide footbox
+Foo -> Bar : "xx"
+loop
+Foo -> Bar : "zz"
+end
+Foo -> Bar : "yy"
+@enduml
+
+## condition
+
+@startuml
+hide footbox
+Foo -> Bar : "xx"
+opt color=red
+Foo -> Bar : "calculate"
+end
+Foo -> Bar : "yy"
+@enduml
+
+@startuml
+Foo -> Bar : "xx"
+opt color=red
+Foo -> Bar : "calculate"
+else
+Foo -> Bar : "calculate"
+end
+Foo -> Bar : "yy"
+@enduml
+
+## reference
+
+@startuml
+hide footbox
+
+Foo -> Bar
+ref over Foo, Bar : subroutine
+@enduml
