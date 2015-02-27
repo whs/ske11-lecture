@@ -6,7 +6,7 @@
 
 ![do1](img/do1.png)
 
-ให้เอารหัสที่ได้ไปใส่ที่ [Promo](https://cloud.digitalocean.com/user_payment_profiles)
+ให้เอารหัสที่ได้ไปใส่ที่ [Promo](https://cloud.digitalocean.com/user_payment_profiles) ถ้าจะสมัครใหม่อย่าลืมใช้ [Referral code เรา](https://www.digitalocean.com/?refcode=4aeb73ddac2e) :p
 
 ## Add public key
 
