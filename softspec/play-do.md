@@ -75,6 +75,7 @@ ssh root@ip
 ```sh
 dd if=/dev/zero of=swap bs=1M count=1024 # create a 1024*1MB empty file named swap
 mkswap swap # format the file named swap as swap
+chmod 600 swap
 swapon swap # enable swap at the file named swap
 free -m
 ```
@@ -196,4 +197,172 @@ swapon swap
 
 วิธีการติดตั้งมือนั้นจะซับซ้อนน้อยกว่าการใช้ Dokku และยืดหยุ่นกว่า แต่ก็มีขั้นตอนเยอะอยู่เหมือนกัน
 
-// ไว้เขียนต่อ
+### Create VM
+
+เข้าไปที่ [DigitalOcean Control Panel](https://cloud.digitalocean.com) กดที่ Create Droplet ซ้ายมือ กรอกรายละเอียดตามต้องการ
+
+- Hostname อะไรก็ได้ แนะนำเป็นชื่อเว็บที่จะลงจริง เช่น gg.whs.in.th หรือถ้าไม่มีเว็บใส่เป็นชื่อเฉยๆ เช่น madoka ก็ได้
+- Size เท่าไรก็ว่าไป
+- Region ใช้ Singapore จะเข้าเร็วสุด
+- Settings ไม่จำเป็นต้องเปิดอะไรเลย
+- Image สำหรับ Guide นี้ใช้ CentOS 7
+  - CentOS 7 มี [systemd](https://speakerdeck.com/whs/systemd-linux-init) ซึ่ง Ubuntu, Debian จะปรับมาใช้ในอนาคต
+- SSH Key เลือกเป็น Public Key ที่ใส่ไว้ในขั้นตอนข้างบน หรือจะไม่ใช้ก็ได้โดยจะมีอีเมลบอกรหัสอีกที
+
+เมื่อ create จะใช้เวลาประมาณ 1-2 นาทีแล้วจะมีอีเมลมาเตือนด้วย ก็ให้คลิกเข้าไปที่เครื่องในหน้า Droplet แล้วจด IP ไว้
+
+![do3](img/do3.png)
+
+### Install MySQL driver
+
+ระหว่างรอสร้างเครื่อง กลับมาที่เครื่องของเรา ให้ติดตั้ง plugin สำหรับต่อ MySQL บน Play โดยเปิด `build.sbt` มาแก้ไข `libraryDependencies`
+
+```
+libraryDependencies ++= Seq(
+  javaJdbc,
+  javaEbean,
+  cache,
+  javaWs,
+  "org.mariadb.jdbc" % "mariadb-java-client" % "1.1.8"
+)
+```
+
+(ดูตัวอย่างใน [TeamGG](https://github.com/SSD2015/TeamGG/blob/master/build.sbt) ได้)
+
+### Compile app
+
+ต่อมาให้แพคแอพเป็นไฟล์ โดยสั่ง
+
+```sh
+activator universal:packageZipTarball
+```
+
+(สั่งใน folder ของ project เหมือนกับเวลาสั่ง `activator run`)
+
+จะได้ไฟล์ `target/universal/appname-1.0-SNAPSHOT.tgz` (appname จะเป็นชื่อแอพตาม build.sbt) ให้อัพโหลดขึ้นบน server
+
+```sh
+scp target/universal/appname-1.0-SNAPSHOT.tgz root@ip:
+```
+
+(ไม่แน่ใจถ้าใช้ Windows มี `scp` ให้ใน Git Bash มั้ย ถ้าไม่มีก็ใช้ FileZilla อัพขึ้นไปก็ได้ โดยตั้ง username=root, port=22​ อัพโหลดไปไว้ที่ /root)
+
+### อัพแรม
+
+เช่นเดียวกันกับการใช้ Dokku เราจะต้องเพิ่มแรมให้เครื่องเราไม่งั้นจะไม่พอใช้
+
+```sh
+dd if=/dev/zero of=swap bs=1M count=1024 # create a 1024*1MB empty file named swap
+mkswap swap # format the file named swap as swap
+chmod 600 swap
+swapon swap # enable swap at the file named swap
+```
+
+### Install Java & MySQL
+
+ถัดไปจะติดตั้งโปรแกรมที่จำเป็นต้องใช้บน server
+
+```sh
+wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.rpm # Download jdk8
+rpm -Uvh jdk-8u31-linux-x64.rpm
+yum install -y mariadb-server # Install mariadb
+systemctl enable mariadb # start mariadb on boot
+systemctl start mariadb # start mariadb right now
+mysql_secure_installation
+```
+
+(ที่ต้องโหลด JDK8 เองเพราะ CentOS ยังไม่มี JDK8 ให้)
+
+เมื่อสั่ง `mysql_secure_installation` จะมีเมนูคำถามให้ตอบดังนี้
+
+1. **Enter current password for root (enter for none):** กด enter
+2. **Set root password? [Y/n]** ตอบ `y`
+3. **New password:** ตั้งรหัส admin database (จะไม่ขึ้นอะไรเลยเวลาพิมพ์)
+4. **Remove anonymous users? [Y/n]** ตอบ `y`
+5. **Disallow root login remotely? [Y/n]** ตอบ `y`
+6. **Remove test database and access to it? [Y/n] y** ตอบ `y`
+7. **Reload privilege tables now? [Y/n] y** ตอบ `y`
+
+ต่อมาจะสร้าง database และ user ของแอพเรา ให้สั่ง `mysql -p` แล้วกรอกรหัส admin database ลงไป
+
+```sql
+CREATE DATABASE app;
+GRANT ALL ON app.* TO app@localhost IDENTIFIED BY 'password';
+```
+
+ตั้งรหัสผ่านได้ตามใจชอบ (user `app` จะสามารถทำอะไรใน database `app` ก็ได้ ยกเว้นสร้าง user หรือ database ใหม่)
+
+### Create user
+
+เพื่อความปลอดภัยเราควรจะรันแอพเราด้วย user ปกติ ไม่ใช่ root
+
+```sh
+useradd app
+```
+
+### Install app
+
+ย้ายไฟล์ที่อัพโหลดขึ้นมาไปไว้ที่ของ user app แล้วแตกไฟล์
+
+```sh
+mv appname-1.0-SNAPSHOT.tgz ~app
+cd ~app
+tar xf appname-1.0-SNAPSHOT.tgz
+chown -R app:root appname-1.0-SNAPSHOT
+```
+
+### Setup systemd
+
+ขั้นต่อมาเราจะให้ระบบ start แอพเราให้โดยอัตโนมัติ โดยให้แก้ไขไฟล์ `/etc/systemd/system/app.service` (จะใช้ vi หรือ nano ตามสะดวก) ใส่ตามนี้
+
+```ini
+[Unit]
+After=network.target
+[Service]
+User=app
+Group=app
+WorkingDirectory=/home/app
+StandardError=journal
+ExecStart=/home/app/appname-1.0-SNAPSHOT/bin/appname -DapplyEvolutions.default=true -Ddb.default.driver=org.mariadb.jdbc.Driver -Ddb.default.url=jdbc:mysql://localhost/app?user=app&password=app
+[Install]
+WantedBy=multi-user.target
+```
+
+(อย่าลืมเปลี่ยน `appname` 2 จุด และ password ของ database อันที่สร้างทีหลัง)
+
+เสร็จแล้วสั่ง
+
+```sh
+chmod 600 /etc/systemd/system/app.service
+systemctl daemon-reload
+systemctl enable app # start app on boot
+systemctl start app # start app now
+```
+
+ถึงตรงนี้น่าจะเข้า `http://ip:9000/` ได้แล้ว ถ้าไม่ได้ลองดู log
+
+```sh
+systemctl status app -l
+```
+
+### Setup firewall
+
+ต่อมาเราต้องการให้ port 9000 กลายเป็น port 80 เพื่อที่จะไม่ต้องใส่ :9000 ตลอดเวลาที่เข้า ก็สามารถทำได้โดยอาศัย firewall ช่วย
+
+```sh
+systemctl enable firewalld # start firewalld on boot
+systemctl start firewalld # start firewalld now
+firewall-cmd --permanent --add-service=http # allow http access (ssh is enabled by default)
+firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=9000
+firewall-cmd --reload # apply new rules
+```
+
+เสร็จแล้วเป็นอันเสร็จพิธี สามารถเข้าเว็บจาก `http://ip/` ได้เลย หรือจะเอาไปจดโดเมนก็ได้
+
+### Update app
+
+ถ้าจะลงแอพรุ่นใหม่ ให้ทำเฉพาะขั้นตอนดังนี้
+
+1. Compile app
+2. Install app
+3. สั่ง `systemctl restart app`
