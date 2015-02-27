@@ -77,6 +77,7 @@ dd if=/dev/zero of=swap bs=1M count=1024 # create a 1024*1MB empty file named sw
 mkswap swap # format the file named swap as swap
 chmod 600 swap
 swapon swap # enable swap at the file named swap
+echo "/root/swap    none    swap    sw    0   0" >> /etc/fstab
 free -m
 ```
 
@@ -183,16 +184,6 @@ git push dokku master
 dokku logs projectname
 ```
 
-#### Reboot
-
-ในกรณีที่ reboot เครื่อง swap ที่ทำไว้จะหลุด แอพน่าจะรันได้ไม่มีปัญหา แต่เวลา push อาจจะ error แรมไม่พอ ให้ ssh เข้าไปเปิด swap ด้วยคำสั่ง
-
-```sh
-swapon swap
-```
-
-(มีวิธีถาวรอยู่ ลองหาเรื่อง fstab อ่านถ้าจะเซตละกัน)
-
 ## ติดตั้งมือ
 
 วิธีการติดตั้งมือนั้นจะซับซ้อนน้อยกว่าการใช้ Dokku และยืดหยุ่นกว่า แต่ก็มีขั้นตอนเยอะอยู่เหมือนกัน
@@ -256,6 +247,7 @@ dd if=/dev/zero of=swap bs=1M count=1024 # create a 1024*1MB empty file named sw
 mkswap swap # format the file named swap as swap
 chmod 600 swap
 swapon swap # enable swap at the file named swap
+echo "/root/swap    none    swap    sw    0   0" >> /etc/fstab
 ```
 
 ### Install Java & MySQL
