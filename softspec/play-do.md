@@ -10,7 +10,7 @@
 
 ## Add public key
 
-(ขั้นตอนการใช้ ssh-keygen ไม่ต้องทำ ถ้าเคยสร้าง ssh key ใน GitHub/Bitbucket ไปแล้ว)
+*(ขั้นตอนการใช้ ssh-keygen ไม่ต้องทำ ถ้าเคยสร้าง ssh key ใน GitHub/Bitbucket ไปแล้ว)*
 
 ให้ Generate ssh public key ขึ้นมา โดยสั่ง
 
@@ -24,17 +24,17 @@ ssh-keygen -t rsa -b 4096
 
 ----
 
-(ขั้นตอนนี้ต้องทำ)
+*(ขั้นตอนนี้ต้องทำ)*
 
-เสร็จแล้วเข้าไปที่หน้า [SSH Keys](https://cloud.digitalocean.com/ssh_keys) กด Add SSH Key แล้ว Paste ข้อความลงไปในช่อง Public SSH Key ตั้งชื่อตามต้องการ
+เข้าไปที่หน้า [SSH Keys](https://cloud.digitalocean.com/ssh_keys) กด Add SSH Key แล้ว Paste ข้อความลงไปในช่อง Public SSH Key ตั้งชื่อตามต้องการ
 
 ## Dokku
 
-การติดตั้ง Play จะมี 2 วิธีด้วยกันคือลงด้วยระบบเปล่าๆ กับใช้ Dokku โดย Dokku เป็นโปรแกรมแบบง่ายๆ ที่จะจำลองระบบให้เหมือนกับ Heroku ข้อดีของวิธีนี้คือไม่จำเป็นต้องเซต server ทั้งหมดเอง
+การติดตั้ง Play จะมี 2 วิธีด้วยกันคือลงด้วยระบบเปล่าๆ กับใช้ Dokku โดย Dokku เป็นโปรแกรมจำลองระบบให้เหมือนกับ Heroku ข้อดีของวิธีนี้คือไม่จำเป็นต้องเซต server ทั้งหมดเอง
 
 **ข้อความรู้** แอพที่จะติดตั้งด้วย dokku ตัวโปรแกรมต้องอยู่ภายนอกสุดของ git เท่านั้น พูดง่ายๆ คือ เปิดเข้าไปใน GitHub ของ project เราแล้วจะต้องเห็นไฟล์ชื่อ build.sbt เลย
 
-### Framework อื่นๆ ด้วย Dokku
+#### Framework อื่นๆ ด้วย Dokku
 
 ถ้าจะหาวิธีติดตั้ง Framework อื่นๆ ให้ลองศึกษาดูว่าเซตลง Heroku ทำยังไง ก็ทำตามแบบเดียวกันได้หมดเลย ยกเว้นเวลา push ให้ push ไปที่ server เราแทน แล้วก็ตัว database เราอาจจะใช้ MySQL/MariaDB​ โดยติดตั้งตาม guide นี้ก็ได้ หรือจะลง Postgres แล้วติดตั้งตาาม guide ของ Heroku ก็ได้
 
@@ -42,7 +42,7 @@ ssh-keygen -t rsa -b 4096
 
 ### Create VM
 
-เมื่อได้เครดิตมาเรียบร้อยแล้วกดที่ Create Droplet ซ้ายมือ กรอกรายละเอียดตามต้องการ
+เข้าไปที่ [DigitalOcean Control Panel](https://cloud.digitalocean.com) กดที่ Create Droplet ซ้ายมือ กรอกรายละเอียดตามต้องการ
 
 - Hostname อะไรก็ได้ แนะนำเป็นชื่อเว็บที่จะลงจริง เช่น gg.whs.in.th หรือถ้าไม่มีเว็บใส่เป็นชื่อเฉยๆ เช่น madoka ก็ได้
 - Size เท่าไรก็ว่าไปเพราะแรมมันไม่พออยู่ดี 555
@@ -54,21 +54,21 @@ ssh-keygen -t rsa -b 4096
 
 - SSH Key เลือกเป็น Public Key ที่ใส่ไว้เมื่อกี้
 
-เมื่อ create จะใช้เวลาประมาณ 1-2 นาทีแล้วจะมีอีเมลมาเตือนด้วย ก็ให้คลิกเข้าไปที่เครื่องในหน้า Droplet
+เมื่อ create จะใช้เวลาประมาณ 1-2 นาทีแล้วจะมีอีเมลมาเตือนด้วย ก็ให้คลิกเข้าไปที่เครื่องในหน้า Droplet แล้วจด IP ไว้
 
 ![do3](img/do3.png)
 
-สังเกต IP ไว้ให้ดี
-
 ### อัพแรม
 
-เปิด Terminal/Git Bash มาแล้วสั่ง
+ขั้นตอนต่อมา เนื่องจาก Play Framework กินแรมตอนคอมไพล์เยอะมากเลยจะต้องทำ swap file ก่อน (Windows เรียกว่า page file)
+
+ให้เปิด Terminal/Git Bash มาแล้วสั่ง
 
 ```sh
 ssh root@ip
 ```
 
-(ถ้ามีคำถาม The authenticity ... ให้ตอบ `yes`)
+(เปลี่ยน ip เป็นไอพีตามที่จดไว้ ถ้ามีคำถาม The authenticity ... ให้ตอบ `yes`)
 
 เสร็จแล้วสร้าง swap file ขึ้นมาขนาด 1GB
 
@@ -79,20 +79,19 @@ swapon swap # enable swap at the file named swap
 free -m
 ```
 
-จะเห็นว่าในคำสั่ง `free -m` บรรทัด Swap จะขึ้นขนาดมาตามขนาดที่เราสร้างไว้ แสดงว่า swap ทำงานแล้ว เสร็จแล้วเราจะกลับมา อย่าเพิ่งปิดหน้าต่าง
+จะเห็นว่าในคำสั่ง `free -m` จะแสดงว่าเรามี swap เท่าไรซึ่งจะต้องมากกว่า 0 แสดงว่า Swap ได้ทำงานแล้ว
 
-(ต้องอัพ swap เพรา play framework ซดแรมเป็นบ้าเลยตอนมันคอมไพล์โปรแกรม)
+เสร็จแล้วเราจะกลับมาใช้ ssh อีกเยอะ อย่าเพิ่งปิดหน้าต่าง
 
 ### Setup Dokku
 
-ให้เปิด browser เข้าไปที่ IP ของเครื่อง
+ให้เปิด browser เข้าไปที่ IP ของเครื่อง จะพบหน้าต่างตามภาพ
 
 ![do4](img/do4.png)
 
 - ถ้ามีโดเมนให้กรอกโดเมนลงไปในช่อง hostname  และติ๊ก Use virtualhost naming for apps
 - ถ้าไม่มีโดเมน ให้กรอกเลข IP ลงไปในช่อง hostname
-
-จะเห็นว่าช่อง admin ssh key จะกรอกไว้แล้วเป็นค่า public key ของเราที่เซฟเอาไว้
+- จะเห็นว่าช่อง admin ssh key จะกรอกไว้แล้วเป็นค่า public key ของเราที่เซฟเอาไว้ ไม่ต้องแก้อะไร
 
 ### Setup database
 
@@ -114,11 +113,11 @@ dokku plugins-install
 dokku mariadb:create projectname
 ```
 
-(อย่าลืมเปลี่ยน projectname ให้ถูกต้อง​ โดยถ้าติ๊ก virtualhost naming ไว้แอพเราจะเข้าจาก browser ้ที่ projectname.host.name อาจจะไม่ตรงกับชื่อที่ใส่ใน Procfile ก็ได้)
+(ตรง projectname ให้ใส่เป็นชื่อ URL ที่จะเข้าในกรณีที่เปิด virtualhost naming ไว้ เช่น ถ้ากรอก hostname ไปว่า `gg.whs.in.th` ก็จะเข้าแอพได้ที่ `projectname.gg.whs.in.th`)
 
 ---
 
-ให้ติดตั้ง plugin สำหรับต่อ MySQL บน Play โดยเปิด build.sbt มาแก้ไข libraryDependencies
+ให้ติดตั้ง plugin สำหรับต่อ MySQL บน Play โดยเปิด `build.sbt` มาแก้ไข `libraryDependencies`
 
 ```
 libraryDependencies ++= Seq(
@@ -138,11 +137,11 @@ libraryDependencies ++= Seq(
 web: target/universal/stage/bin/myapp -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.driver=org.mariadb.jdbc.Driver -Ddb.default.url=jdbc:mysql://172.17.42.1:49153/db\?user=root\&password=5PE7DYsaevADJadb
 ```
 
-- แก้คำว่า myapp ให้เป็นชื่อโปรแกรมของเราตามที่เขียนไว้ใน build.sbt (เช่น `name := """exceedvote"""` ก็ใส่ว่า `target/universal/stage/bin/exceedvote`)
-- แก้ตรง url โดยใส่ข้อมูล mysql ตามที่มันให้มาในรูปแบบ `jdbc:mysql://IP:PORT/database\?user=root\&password=password`
+- แก้คำว่า myapp ให้เป็นชื่อโปรแกรมของเราตามที่เขียนไว้ใน build.sbt (เช่น `name := """exceedvote"""` ก็ใส่ว่า `target/universal/stage/bin/exceedvote`) อันนี้ไม่ใช่ projectname ที่กำหนดในขั้นตอนเมื่อกี้ ให้ยึดตาม build.sbt อย่างเดียว
+- แก้ตรง url โดยใส่ข้อมูล mysql ตามที่โปรแกรมให้มาตอนสั่ง create ในรูปแบบ `jdbc:mysql://IP:PORT/database\?user=root\&password=password`
   - ปกติแล้ว Dokku จะสร้าง URL ตรงนี้ให้ แต่ต้องมานั่งเขียนเองเพราะ URL ที่ให้มานั้น Play ไม่รองรับ
 
-แล้ว commit การแก้ไขทั้งหมดลง git
+Commit การแก้ไขทั้งหมดลง git
 
 ```sh
 git add Procfile
@@ -159,7 +158,7 @@ git remote add dokku dokku@ip:projectname
 
 (อย่าลืมเปลี่ยน ip กับ projectname ให้ถูกต้อง​)
 
-จากนั้นทุกครั้งที่ต้องการรันแอพ ให้สั่ง
+จากนั้นทุกครั้งที่ต้องการอัพเดตแอพ ให้สั่ง
 
 ```sh
 git push dokku master
@@ -180,16 +179,18 @@ git push dokku master
 ในกรณีที่แอพมีปัญหาใช้งานไม่ได้ ลองเปิด log ดูอาจจะรู้สาเหตุได้ โดย ssh เข้าไปแล้วสั่ง
 
 ```sh
-dokku logs projectnames
+dokku logs projectname
 ```
 
 #### Reboot
 
-ในกรณีที่ reboot เครื่องไว้ swap ที่ทำไว้จะหลุด แอพน่าจะรันได้ไม่มีปัญหา แต่เวลา push อาจจะ error แรมไม่พอ ให้ ssh เข้าไปเปิด swap ด้วยคำสั่ง
+ในกรณีที่ reboot เครื่อง swap ที่ทำไว้จะหลุด แอพน่าจะรันได้ไม่มีปัญหา แต่เวลา push อาจจะ error แรมไม่พอ ให้ ssh เข้าไปเปิด swap ด้วยคำสั่ง
 
 ```sh
 swapon swap
 ```
+
+(มีวิธีถาวรอยู่ ลองหาเรื่อง fstab อ่านถ้าจะเซตละกัน)
 
 ## ติดตั้งมือ
 
