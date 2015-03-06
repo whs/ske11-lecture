@@ -1,0 +1,69 @@
+Used in 06-lecture.txt
+
+# Monopoly
+
+@startuml
+left to right direction
+class Player{
+	name
+}
+class Piece{
+	class name
+}
+class Square{
+	name
+}
+
+Die "*" -- "1" Monopoly : < Played with
+Monopoly "1" -- "1..*" Player : < plays
+Player "1" -- "1" Piece : own
+Piece "0..1" -- "40" Square : is on
+Monopoly "1" -- "1" Board : played on
+Board "1" -- "*" Square : contains
+@enduml
+
+# Creator
+
+@startuml
+Board "1" *-- "40" Square
+@enduml
+
+@startuml
+hide footbox
+[--> Board : create
+create Piece
+Board --> Piece: create
+@enduml
+
+# Information Expert
+
+@startuml
+hide footbox
+SquareGetter -> Board : allSquare = getSquare
+SquareGetter -> Square : getItem(index)
+@enduml
+
+# Cohesion 1
+
+@startuml
+hide footbox
+
+[-> Monopoly : doSomething
+activate Monopoly
+Monopoly -> Monopoly : doA
+Monopoly -> Monopoly : doB
+Monopoly -> Monopoly : doC
+deactivate Monopoly
+@enduml
+
+# Cohesion 2
+
+@startuml
+hide footbox
+
+[-> Monopoly : doSomething
+activate Monopoly
+Monopoly -> A : doA
+Monopoly -> B : doB
+deactivate Monopoly
+@enduml
