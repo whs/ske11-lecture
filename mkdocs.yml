@@ -53,8 +53,24 @@ pages:
 - [comskill/01-lecture.md, Y2S1 - Communication Skills for SKE, "14 November 2014: Meeting"]
 # Database
 - [database/01-lecture.md, Y2S2 - Database, "16 January 2015: Introduction to Database Management"]
+- [database/02-lecture.md, Y2S2 - Database, "23 January 2015: Entity Relationship Model"]
+- [database/03-lecture.md, Y2S2 - Database, "15 February 2015: Relational Data Model, Algebra operations, SQL"]
+- [database/04-lecture.md, Y2S2 - Database, "27 February 2015: Anomaly, Constraints, Normal Form"]
+- [database/05-lecture.md, Y2S2 - Database, "3 April 2015: Physical Database Design"]
 # OS
 - [os/01-lecture.md, Y2S2 - Operating System, "16 January 2015: Introduction"]
 # Softspec
 - [softspec/01-lecture.md, Y2S2 - Software Specification and Design, "15 January 2015: Analysis, Design, Process"]
 - [softspec/01-summary.md, Y2S2 - Software Specification and Design, "สรุปบทที่ 1-5 (OOA/D, Iterative process, Inception phase, Requirement)"]
+- [softspec/02-lab.md, Y2S2 - Software Specification and Design, "22 January 2015: Class Diagram, Sequence Diagram"]
+- [softspec/02-lecture.md, Y2S2 - Software Specification and Design, "22 January 2015: Inception, Observer pattern"]
+- [softspec/03-lab.md, Y2S2 - Software Specification and Design, "29 January 2015: Requirements"]
+- [softspec/04-lab.md, Y2S2 - Software Specification and Design, "12 February 2015: Quiz answer"]
+- [softspec/04-lecture.md, Y2S2 - Software Specification and Design, "12 February 2015: Use case, User story, Elaboration"]
+- [softspec/05-lab.md, Y2S2 - Software Specification and Design, "19 February 2015: Milestone, Get out of inception"]
+- [softspec/05-lecture.md, Y2S2 - Software Specification and Design, "19 February 2015: Diagram"]
+- [softspec/06-lab.md, Y2S2 - Software Specification and Design, "26 February 2015: Code reuse, design pattern, Good design principle, Data persistent"]
+- [softspec/06-lecture.md, Y2S2 - Software Specification and Design, "26 February 2015: Object responsibility, GRASP"]
+- [softspec/play-do.md, Y2S2 - Software Specification and Design, "ติดตั้ง Play framework บน DigitalOcean"]
+# Marketing
+- [marketing/01-exam.md, Y3S1 - Introduction to Marketing, "Exercise for Final Exam"]
