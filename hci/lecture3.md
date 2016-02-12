@@ -1,0 +1,3 @@
+# HCI Lecture 3
+## Direct manipulation interface
+Direct manipulation interface are interfaces that map directly to real world items. For example, light switches, steering wheel controller. Another example is video browsing: direct manipulation you can drag objects in the video and it would move forward/backward in time to the time the object was present at that position. Indirect manipulation use traditional seek bar.
